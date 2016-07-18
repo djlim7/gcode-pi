@@ -1,0 +1,3 @@
+[submodule "GCodeModule"]
+	path = GCodeModule
+	url = https://github.com/pauis/gcode

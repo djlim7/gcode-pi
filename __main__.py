@@ -13,4 +13,4 @@ with open(parser_arg.input_file, 'r') as file_stream:
 	s = file_stream.read()
 
 element_tuple = GCodeModule.GCodeObject.GCodeElementHandler(GCodeModule.GCodeProcedure.ParseSyntax(s))
-element_tuple.BindToGCode()
+print(element_tuple.BindToGCode())

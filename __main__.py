@@ -4,13 +4,14 @@ import argparse
 import GCodeModule
 
 # Parse the arguments
-parser_obj = argparse.ArgumentParser()
-parser_obj.add_argument('input_file', type = str ,nargs = '?')
-parser_arg = parser_obj.parse_args()
+PARSER_OBJ = argparse.ArgumentParser()
+PARSER_OBJ.add_argument('input_file', type=str, nargs='?')
+PARSER_ARG = PARSER_OBJ.parse_args()
 
 # Process
-with open(parser_arg.input_file, 'r') as file_stream:
-	s = file_stream.read()
+with open(PARSER_ARG.input_file, 'r') as file_stream:
+    S = file_stream.read()
 
-element_tuple = GCodeModule.GCodeObject.GCodeElementHandler(GCodeModule.GCodeProcedure.ParseSyntax(s))
-print(element_tuple.BindToGCode())
+CUSTOM_PARSER = GCodeModule.GCodeProcedure.GCodeParser(S)
+CUSTOM_ELEMENT_TUPLE = GCodeModule.GCodeObject.GCodeElementHandler(CUSTOM_PARSER.parse_syntax())
+print(CUSTOM_ELEMENT_TUPLE.bind_to_gcode())

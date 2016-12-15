@@ -1,3 +1,5 @@
+#! python3
+
 '''A main logic for Raspberry Pi with GPIO(gpiozero).'''
 
 import argparse
@@ -9,9 +11,15 @@ PARSER_OBJ.add_argument('input_file', type=str, nargs='?')
 PARSER_ARG = PARSER_OBJ.parse_args()
 
 # Process
-with open(PARSER_ARG.input_file, 'r') as file_stream:
-    S = file_stream.read()
+def proc_main():
+    """Main procedure of gcode-pi"""
+    import pprint
 
-CUSTOM_PARSER = GCodeModule.GCodeProcedure.GCodeParser(S)
-CUSTOM_ELEMENT_TUPLE = GCodeModule.GCodeObject.GCodeElementHandler(CUSTOM_PARSER.parse_syntax())
-print(CUSTOM_ELEMENT_TUPLE.bind_to_gcode())
+    with open(PARSER_ARG.input_file, 'r') as file_stream:
+        string = file_stream.read()
+
+        gcode_tuple = GCodeModule.GCodeProcedure.GCodeParser(string).run()
+        pprint.pprint(gcode_tuple)
+
+if __name__ == '__main__':
+    proc_main()

@@ -1,3 +1,5 @@
+#! python3
+
 '''A main logic for Raspberry Pi with GPIO(gpiozero).'''
 
 import argparse

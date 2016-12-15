@@ -7,5 +7,5 @@ Process G-code on Raspberry Pi with pauis/gcode.
     git clone https://github.com/pauis/gcode-pi.git --recursive
 
 ## Usage
-    $ ./__main__.py [input_file]
+    $ python gcode-pi [input_file]
 For more information, use [-h].
